@@ -24,12 +24,21 @@ describe('Todo List', () => {
     await $('//*[@name="Create item"]').click()
     await $('//*[@value="Title"]').setValue('Walk the dog')
     await $('//*[@value="Due"]').click()
-    await $('~30').click()
+    await $('~DatePicker.NextMonth').click()
+    await $('~15').click()
     await $('~Done').click()
     await $('~Create').click()
 
     // Assertions
+
+    const day = 15
+    const date = new Date()
+    date.setMonth(date.getMonth() + 1)
+    const year = date.getFullYear()
+    const monthName = date.toLocaleString('en-US', { month: 'long' })
+
+    const expectedDueText = `Due ${day}. ${monthName} ${year}`
     await expect(await $('~Walk the dog')).toBeDisplayed()
-    await expect(await $('~Due 30. January 2026')).toBeDisplayed()
+    await expect(await $(`~${expectedDueText}`)).toBeDisplayed()
   })
 })
