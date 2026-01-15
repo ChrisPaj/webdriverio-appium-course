@@ -40,7 +40,7 @@ describe('iOS find Element', () => {
     await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
   })
 
-  it.only('find element by predicate string', async () => {
+  it('find element by predicate string', async () => {
     // const alertText = 'label == "Alert Views"'
 
     // high amount of flexibility:
@@ -49,5 +49,20 @@ describe('iOS find Element', () => {
     await $(`-ios predicate string:${alertText}`).click();
     await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
     await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
+  })
+
+  it.only('Exercise: Enter text in the search field', async () => {
+    await $('~Search').click()
+    await $('~Default').click()
+
+    const text = 'type == "XCUIElementTypeSearchField"'
+    await $(`-ios predicate string:${text}`).addValue("I love this course!")
+    await expect($(`-ios predicate string:${text}`)).toHaveAttr("value", "I love this course!")
+
+    // const clearButton = 'name == "Cancel" AND label == "Cancel" AND value == "Cancel"'
+    // await $(`-ios predicate string:${clearButton}`).click()
+    // await expect($(`-ios predicate string:${text}`)).not.toHaveAttr("value")
+    await $('~Clear text').click();
+    await expect($('//XCUIElementTypeSearchField')).not.toHaveAttr("value");
   })
 })
