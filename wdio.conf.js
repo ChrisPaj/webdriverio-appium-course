@@ -24,7 +24,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/ios*.js'
+        './test/specs/ios-native*.js'
     ],
     // Patterns to exclude.
     exclude: [
