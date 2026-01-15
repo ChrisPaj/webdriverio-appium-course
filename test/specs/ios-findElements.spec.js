@@ -17,7 +17,7 @@ describe('iOS find Element', () => {
     }
   })
 
-  it.only('find element xpath', async () => {
+  it('find element xpath', async () => {
     // general xpath syntax: (//tagname[@attribute=value])
     await $('//XCUIElementTypeStaticText[@name="Alert Views"]').click()
     await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
@@ -25,6 +25,18 @@ describe('iOS find Element', () => {
     // unspecific xpath
     // await $('//*[@name="Alert Views"]').click()
     // await $('//*[@label="Simple"]').click()
+    await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
+  })
+
+  it.only('find element by class chain', async () => {
+    // class chain: **/XCUIElementTypeStaticText[`name == "Alert Views"`]
+    // const alertText = '**/XCUIElementTypeStaticText[`name == "Alert Views"`]'
+
+    // high amount of flexibility_
+    // https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules
+    const alertText = '**/XCUIElementTypeStaticText[`label CONTAINS "Alert"`]';
+    await $(`-ios class chain:${alertText}`).click();
+    await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
     await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
   })
 })
