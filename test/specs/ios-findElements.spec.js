@@ -28,7 +28,7 @@ describe('iOS find Element', () => {
     await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
   })
 
-  it.only('find element by class chain', async () => {
+  it('find element by class chain', async () => {
     // class chain: **/XCUIElementTypeStaticText[`name == "Alert Views"`]
     // const alertText = '**/XCUIElementTypeStaticText[`name == "Alert Views"`]'
 
@@ -36,6 +36,17 @@ describe('iOS find Element', () => {
     // https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules
     const alertText = '**/XCUIElementTypeStaticText[`label CONTAINS "Alert"`]';
     await $(`-ios class chain:${alertText}`).click();
+    await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
+    await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
+  })
+
+  it.only('find element by predicate string', async () => {
+    // const alertText = 'label == "Alert Views"'
+
+    // high amount of flexibility:
+    // https://github.com/facebookarchive/WebDriverAgent/wiki/Predicate-Queries-Construction-Rules
+    const alertText = 'value BEGINSWITH[c] "alert"'
+    await $(`-ios predicate string:${alertText}`).click();
     await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
     await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
   })
