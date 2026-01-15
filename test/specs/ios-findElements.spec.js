@@ -16,4 +16,15 @@ describe('iOS find Element', () => {
       console.log(await element.getText());
     }
   })
+
+  it.only('find element xpath', async () => {
+    // general xpath syntax: (//tagname[@attribute=value])
+    await $('//XCUIElementTypeStaticText[@name="Alert Views"]').click()
+    await $('//XCUIElementTypeStaticText[@label="Simple"]').click()
+
+    // unspecific xpath
+    // await $('//*[@name="Alert Views"]').click()
+    // await $('//*[@label="Simple"]').click()
+    await expect(await driver.getAlertText()).toContain("A Short Title Is Best")
+  })
 })
