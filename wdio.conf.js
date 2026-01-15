@@ -6,7 +6,7 @@ exports.config = {
     // Runner Configuration
     // ====================
     //
-    port: 4723,
+    port: 4724,
     //
     // ==================
     // Specify Test Files
@@ -24,7 +24,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/ios/ios-todo-item*.js'
+        './test/specs/ios/ios*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -63,10 +63,10 @@ exports.config = {
         // }
         {
             platformName: "ios",
-            "appium:platformVersion": "14.5",
-            "appium:deviceName": "iPhone 12",
+            "appium:platformVersion": "18.1",
+            "appium:deviceName": "iPhone 15 Pro",
             "appium:automationName": "XCUITest",
-            "appium:app": path.join(process.cwd(), "app/ios/MVCTodo.app"),
+            "appium:app": path.join(process.cwd(), "./app/ios/MVCTodo.app"),
         }
     ],
     //
