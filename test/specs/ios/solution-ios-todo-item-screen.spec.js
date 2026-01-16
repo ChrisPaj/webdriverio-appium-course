@@ -1,5 +1,5 @@
-const ListScreen = require('../../screenobjects/ios/list.screen');
-const ItemScreen = require('../../screenobjects/ios/item.screen');
+const ListScreen = require('../../screenobjects/ios/solution-list.screen');
+const ItemScreen = require('../../screenobjects/ios/solution-item.screen');
 
 describe('Todo Item', () => {
   it('Create a Todo Item', async () => {

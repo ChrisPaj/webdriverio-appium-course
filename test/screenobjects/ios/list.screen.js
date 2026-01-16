@@ -1,18 +1,19 @@
 class ListScreen {
   get createListBtn() {
-    return $('//*[@name="Create list"]');
+    const createListButton  = 'name == "Create list" AND label == "Create list" AND value == "Create list"'
+    return $(`-ios predicate string:${createListButton}`)
   }
 
   get listNameInput() {
-    return $('//*[@value="List Name"]');
+    return $('//*[@value="List Name"]')
   }
 
   get createBtn() {
-    return $('~Create');
+    return $('~Create')
   }
 
   listNameField(name) {
-    return $(`~${name}`);
+    return $(`~${name}`)
   }
 
 }
