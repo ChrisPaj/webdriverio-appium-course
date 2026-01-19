@@ -42,4 +42,4 @@ itemDueDateField(dueText) {
 
 }
 
-module.exports = new ItemScreen();
+export default new ItemScreen();
