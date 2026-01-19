@@ -4,6 +4,10 @@ class ListScreen {
     return $(`-ios predicate string:${createListButton}`)
   }
 
+  get openItem() {
+    return $('//*[@name="Generic Todo List"]')
+  }
+
   get listNameInput() {
     return $('//*[@value="List Name"]')
   }

@@ -5,20 +5,24 @@ import ListScreen from '../../screenobjects/ios/list.screen'
 import ItemScreen from '../../screenobjects/ios/item.screen'
 
 describe('Todo List', () => {
-  it('Create a Todo List', async () => {
+  before(async () => {
+    // Create a Todo List
     await ListScreen.createListBtn.click()
-    await ListScreen.listNameInput.setValue('My First Todo List')
+    await ListScreen.listNameInput.setValue('Generic Todo List')
     await ListScreen.createBtn.click()
-    await expect(await ListScreen.listNameField('My First Todo List')).toBeDisplayed()
+    await expect(await ListScreen.listNameField('Generic Todo List')).toBeDisplayed()
+    await ListScreen.openItem.click()
   })
 
-  it.only('Create Todo List with Item(s)', async () => {
-    await ListScreen.createListBtn.click()
-    await ListScreen.listNameInput.setValue('My Second Todo List')
-    await ListScreen.createBtn.click()
-    await expect(await ListScreen.listNameField('My Second Todo List')).toBeDisplayed()
+  // it('Create and open a Todo List', async () => {
+  //   await ListScreen.createListBtn.click()
+  //   await ListScreen.listNameInput.setValue('My First Todo List')
+  //   await ListScreen.createBtn.click()
+  //   await expect(await ListScreen.listNameField('My First Todo List')).toBeDisplayed()
+  //   await ListScreen.openItem.click()
+  // })
 
-    await ItemScreen.startItem.click()
+  it.only('Create Todo List with Item(s)', async () => {
     await ItemScreen.createItemButton.click()
     await ItemScreen.title.setValue('Walk the dog')
     await ItemScreen.due.click()
@@ -39,4 +43,5 @@ describe('Todo List', () => {
     await expect(await ItemScreen.itemTextField('Walk the dog')).toBeDisplayed()
     await expect(await ItemScreen.itemDueDateField(expectedDueText)).toBeDisplayed()
   })
+
 })

@@ -1,9 +1,5 @@
 class ItemScreen {
 
-  get startItem() {
-    return $('//*[@name="My Second Todo List"]')
-  }
-
   get createItemButton() {
     return $('//*[@name="Create item"]')
   }
