@@ -1,13 +1,6 @@
 const path = require('path');
 
 exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    //
-    port: 4724,
-    //
     // ==================
     // Specify Test Files
     // ==================
@@ -23,9 +16,6 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-    specs: [
-        './test/specs/ios/ios*POM*.js'
-    ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -52,23 +42,6 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [
-        //     {
-        //     platformName: "Android",
-        //     "appium:platformVersion": "11.0",
-        //     "appium:deviceName": "Pixel 3",
-        //     "appium:automationName": "UIAutomator2",
-        //     "appium:app": path.join(process.cwd(), "./app/android/ColorNote Notepad.apk"),
-        //     "appium:autoGrantPermissions": true
-        // }
-        {
-            platformName: "ios",
-            "appium:platformVersion": "18.1",
-            "appium:deviceName": "iPhone 15 Pro",
-            "appium:automationName": "XCUITest",
-            "appium:app": path.join(process.cwd(), "./app/ios/MVCTodo.app"),
-        }
-    ],
     //
     // ===================
     // Test Configurations

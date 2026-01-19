@@ -4,7 +4,9 @@
   "description": "Appium tests using WebdriverIO",
   "private": true,
   "scripts": {
-    "test": "wdio run wdio.conf.js"
+    "test": "wdio run wdio.conf.js",
+    "test:android": "wdio config/wdio.android.conf.js",
+    "test:ios": "wdio config/wdio.ios.conf.js"
   },
   "keywords": [
     "webdriverio",
